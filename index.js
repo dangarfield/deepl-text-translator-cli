@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const puppeteer = require('puppeteer')
 const fs = require('fs-extra')
 const path = require('path')
@@ -26,7 +28,7 @@ const initPuppeteer = async () => {
   })
 
   await page.click('button.dl_cookieBanner--buttonAll')
-//   await login()
+  await login()
 }
 const login = async () => {
   await page.click('button[dl-test="menu-account-out-btn"]')
@@ -82,9 +84,9 @@ const translateOneFile = async (text, sourceLang, targetLang) => {
 const prepareFiles = async () => {
   console.log(chalk`{cyan INFO:} Identifying Files...`)
   const data = {sources: [], targets: [], translations: {complete: [], toTranslate: []}}
-  const sources = await fs.readdir(path.join(__dirname, 'sources'))
+  const sources = await fs.readdir(path.resolve('sources'))
   sources.forEach((source) => {
-    const files = read(path.join(__dirname, 'sources', source))
+    const files = read(path.resolve('sources', source))
     data.sources.push({
       lang: source,
       files
@@ -92,11 +94,11 @@ const prepareFiles = async () => {
     console.log(chalk`{cyan INFO:} Source language available: {green ${source}}          (${files.length} files)`)
   })
 
-  const targets = await fs.readdir(path.join(__dirname, 'translations'))
+  const targets = await fs.readdir(path.resolve('translations'))
   targets.forEach((target) => {
     const langSource = target.split('_')[0]
     const langTarget = target.split('_')[1]
-    const filesComplete = read(path.join(__dirname, 'translations', target))
+    const filesComplete = read(path.resolve('translations', target))
     const filesToTranslate = data.sources.filter(f => f.lang === langSource)[0].files.filter(f => !filesComplete.includes(f))
     data.targets.push({
       lang: {
@@ -150,8 +152,8 @@ const translateFiles = async (toTranslate) => {
 
   for (let i = 0; i < toTranslate.length; i++) {
     const toTranslateOne = toTranslate[i]
-    const sourceFilePath = path.join(__dirname, 'sources', toTranslateOne.langSource, toTranslateOne.file)
-    const targetFilePath = path.join(__dirname, 'translations', `${toTranslateOne.langSource}_${toTranslateOne.langTarget}`, toTranslateOne.file)
+    const sourceFilePath = path.resolve('sources', toTranslateOne.langSource, toTranslateOne.file)
+    const targetFilePath = path.resolve('translations', `${toTranslateOne.langSource}_${toTranslateOne.langTarget}`, toTranslateOne.file)
     const sourceText = await fs.readFile(sourceFilePath, 'utf8') // TODO, utf8 will not work with all charset
     // console.log(`\nTranslating ${i + 1} of ${toTranslate.length} - ${toTranslateOne.langSource} to ${toTranslateOne.langTarget} - ${toTranslateOne.file}`)
 
@@ -175,8 +177,8 @@ const pad = (width, string, padding) => {
 const ensureSourceAndTranslationDirectories = async (config) => {
   config.translations.forEach((translation) => {
     const source = Object.keys(translation)[0]
-    fs.ensureDirSync(path.join(__dirname, 'sources', source))
-    fs.ensureDirSync(path.join(__dirname, 'translations', `${source}_${translation[source]}`))
+    fs.ensureDirSync(path.resolve('sources', source))
+    fs.ensureDirSync(path.resolve('translations', `${source}_${translation[source]}`))
   })
 }
 const showHelp = () => {
@@ -186,7 +188,7 @@ const showHelp = () => {
   console.log(chalk`      DeepL supported languages are: de-DE, en-GB, en-US, fr-FR, it-IT, ja-JA, es-ES, nl-NL, pl-PL, pt-PT, pt-BR, ru-RU, zh-ZH`)
 }
 const validateConfig = async () => {
-  const configPath = path.join(__dirname, 'config.yml')
+  const configPath = path.resolve('config.yml')
   //   console.log(, configPath)
   if (!fs.existsSync(configPath)) {
     const configDefault = {

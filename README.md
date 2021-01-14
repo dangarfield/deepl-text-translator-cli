@@ -6,11 +6,12 @@
 ## Installation and usage
 - Install [node js](https://nodejs.org/en/download/)
 - Install `npm i -g deepl-text-translator-cli`
+- Run `deepl-text` from cmd line
 
 ## Usage
-- Running `npx deepl-text-translator-cli` on a folder with create a `config.yml` file as well as `sources` and `translation` directories
+- Running `deepl-text` on a folder with create a `config.yml` file as well as `sources` and `translation` directories
 - Configure `config.yml` with your DeepL credentials and set the desired translation sources and targets
 - DeepL supported languages are: de-DE, en-GB, en-US, fr-FR, it-IT, ja-JA, es-ES, nl-NL, pl-PL, pt-PT, pt-BR, ru-RU, zh-ZH) - Translations must be in this 5 digit format (including case)
 - Add any folders and text files to be translated in the relevant `sources` folders
-- Once source text files and configurations have been set, run `npx deepl-text-translator-cli` once again to translate the files
+- Once source text files and configurations have been set, run `deepl-text` once again to translate the files
 - Translation progress will displayed on the CLI

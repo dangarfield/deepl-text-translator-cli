@@ -1,11 +1,18 @@
 {
   "name": "deepl-text-translator-cli",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Unofficial CLI for translating your own text files with DeepL text services programmatically without using the developer API or the DeepL website",
   "main": "index.js",
   "bin": {
-    "deepl-text": "./index.js",
-    "deepl-text-translator-cli": "./index.js"
+    "deepl-text": "./index.js"
+  },
+  "keywords": [
+    "deepl",
+    "translation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dangarfield/deepl-text-translator-cli"
   },
   "dependencies": {
     "chalk": "^4.1.0",
@@ -18,9 +25,11 @@
     "yaml": "^1.10.0"
   },
   "scripts": {
-    "start": "node index.js",
-    "deepl-text-translator-cli": "node index.js"
+    "start": "node index.js"
   },
-  "author": "Dan Garfield",
+  "author": {
+    "name": "Dan Garfield",
+    "url": "https://github.com/dangarfield"
+  },
   "license": "ISC"
 }
