@@ -2,3 +2,5 @@ node_modules/
 sources/
 translations/
 config.yml*
+.DS_Store
+*.gif

@@ -1,7 +1,7 @@
 # DeepL Text Translation CLI
 > Unofficial CLI for translating your own text files with DeepL text services programmatically without using the developer API or the DeepL website
 
-![alt text](https://i.ibb.co/FgFH7yY/Screenshot-2021-01-14-at-16-24-51.png "Engine parts")
+![alt text](https://i.ibb.co/vhT7Rfb/deepl-text-example.gif "DeepL Text Example")
 
 ## Installation and usage
 - Install [node js](https://nodejs.org/en/download/)
