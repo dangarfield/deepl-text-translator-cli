@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Unofficial CLI for translating your own text files with DeepL text services programmatically without using the developer API or the DeepL website",
   "main": "index.js",
+  "bin": {
+    "deepl-text": "./index.js",
+    "deepl-text-translator-cli": "./index.js"
+  },
   "dependencies": {
     "chalk": "^4.1.0",
     "cli-progress": "^3.8.2",
@@ -14,7 +18,8 @@
     "yaml": "^1.10.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "deepl-text-translator-cli": "node index.js"
   },
   "author": "Dan Garfield",
   "license": "ISC"
