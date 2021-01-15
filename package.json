@@ -1,6 +1,6 @@
 {
   "name": "deepl-text-translator-cli",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Unofficial CLI for translating your own text files with DeepL text services programmatically without using the developer API or the DeepL website",
   "main": "index.js",
   "bin": {

@@ -65,7 +65,7 @@ const translateOneFile = async (text, sourceLang, targetLang) => {
   await page.click(`[dl-test="translator-lang-option-${targetLang}"]`)
 
   await page.focus('textarea[dl-test="translator-source-input"]')
-  await page.type('textarea[dl-test="translator-source-input"]', text + ' 1234', {delay: 2})
+  await page.type('textarea[dl-test="translator-source-input"]', text + ' 1234')
 
   let complete = false
   let outputText
